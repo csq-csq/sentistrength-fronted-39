@@ -32,11 +32,11 @@ upload-jar:
   stage: upload
   image: ictu/sshpass
   script: 
-    - sshpass -p $ssh_password scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vue/dist root@$server_ip:$upload_path
+    - sshpass -p $password scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vue/dist root@$server_ip:$upload_path
 
 # 启动 vue
 deploy-test:
   stage: deploy
   image: ictu/sshpass
   script:
-    - sshpass -p $ssh_password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nginx -s reload >/dev/null 2>&1 &"
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nginx -s reload >/dev/null 2>&1 &"
