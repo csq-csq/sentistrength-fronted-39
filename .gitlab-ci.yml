@@ -19,11 +19,11 @@ vue-build:
     - npm run build
   cache:
     paths:
-     - node_modules/
-     - dist/
+     - vue/node_modules/
+     - vue/dist/
   artifacts:
     paths: 
-      - dist
+      - vue/dist
 
 
 # 上传生成的 dist到你的应用服务器，这里使用 ictu/sshpass 这个镜像，是为了使用 sshpass 命令
@@ -32,7 +32,7 @@ upload-jar:
   stage: upload
   image: ictu/sshpass
   script: 
-    - sshpass -p $ssh_password scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no dist root@$server_ip:$upload_path
+    - sshpass -p $ssh_password scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vue/dist root@$server_ip:$upload_path
 
 # 启动 vue
 deploy-test:
