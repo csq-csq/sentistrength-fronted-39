@@ -3,7 +3,7 @@
     <el-form-item label="sentidata">
       <el-radio-group v-model="form.sentidata">
         <el-radio label='sentidata'>是</el-radio>
-        <el-radio label=''>否</el-radio>
+        <el-radio label=''>否test</el-radio>
       </el-radio-group>
       <el-input v-model='form.sentidatastring' placeholder="词典文件夹" :disabled="form.sentidata==''"></el-input>
       <el-divider></el-divider>
