@@ -41,7 +41,7 @@
 
     <el-main
         v-loading="loading2"
-        element-loading-text="正在爬取"
+        element-loading-text="正在预处理"
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-divider></el-divider>
@@ -52,7 +52,7 @@
 
     <el-main
         v-loading="loading3"
-        element-loading-text="正在爬取"
+        element-loading-text="正在分析"
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-divider></el-divider>
