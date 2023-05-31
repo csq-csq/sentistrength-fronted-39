@@ -1,39 +1,57 @@
 <template>
-  <el-form
-      :model="dynamicValidateForm"
-      ref="dynamicValidateForm"
-      label-width="100px"
-      class="demo-dynamic">
-    <el-form-item
-        v-for="(date, index) in dynamicValidateForm.dates"
-        :label="'日期' + index"
-        :key="date.key"
-        :prop="'dates.' + index + '.value'"
-        :rules="{
-      required: true, message: '域名不能为空', trigger: 'blur'
-    }"
-    >
-<!--      <el-input v-model="domain.value"></el-input><el-button @click.prevent="removeDomain(domain)">删除</el-button>-->
-      <el-date-picker
-          v-model="date.value"
-          type="daterange"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期">
-      </el-date-picker>
-      <el-button @click.prevent="removeDomain(date)">删除</el-button>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
-      <el-button @click="addDate">新增日期</el-button>
-      <el-button @click="resetForm('dynamicValidateForm')">重置</el-button>
-    </el-form-item>
-  </el-form>
+  <div>
+    <h1>第一步：爬取</h1>
+    <br>
+    <el-form
+        v-loading="loading"
+        element-loading-text="正在爬取"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+        :model="dynamicValidateForm"
+        ref="dynamicValidateForm"
+        label-width="100px"
+        class="demo-dynamic">
+      <el-form-item
+          v-for="(date, index) in dynamicValidateForm.dates"
+          :label="'版本' + (index+1)"
+          :key="date.key"
+          :prop="'dates.' + index + '.value'"
+          :rules="{
+        required: true, message: '域名不能为空', trigger: 'blur'
+      }"
+      >
+  <!--      <el-input v-model="domain.value"></el-input><el-button @click.prevent="removeDomain(domain)">删除</el-button>-->
+        <el-date-picker
+            v-model="date.value"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期">
+        </el-date-picker>
+        <el-button @click.prevent="removeDomain(date)">删除</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
+        <el-button @click="addDate">新增日期</el-button>
+        <el-button @click="resetForm('dynamicValidateForm')">重置</el-button>
+      </el-form-item>
+    </el-form>
+
+    <el-divider></el-divider>
+    <h1>第二步：预处理</h1>
+    <br>
+    <el-button type="primary" @click="pretreatment">预处理</el-button>
+
+    <el-divider></el-divider>
+    <h1>第三步：分析</h1>
+    <br>
+    <el-button type="primary" @click="analysis">分析</el-button>
+  </div>
 </template>
 
 <script>
 import request from "@/utils/request";
-import { Loading } from 'element-ui';
+
 
 export default {
   name: "Spider",
@@ -44,11 +62,12 @@ export default {
           value: ''
         }],
       },
+      loading:false,
     };
   },
   methods: {
     submitForm(formName) {
-    Loading.service({fullscreen:true})
+      this.loading=true
       this.$refs[formName].validate((valid) => {
         if (valid) {
           alert('submit!');
@@ -59,6 +78,7 @@ export default {
                 if(Response.code==200){
                   alert('爬取成功！')
                 }else{
+                  console.log(Response.code)
                   alert('爬取失败！')
                 }
               })
@@ -82,6 +102,32 @@ export default {
         value: '',
         key: Date.now()
       });
+    },
+    pretreatment(){
+      alert('开始预处理！')
+      request
+          .post('/pretreatment', "pretreatment")
+          .then(Response => {
+            if(Response.code==200){
+              alert('预处理成功！')
+            }else{
+              console.log(Response.code)
+              alert('预处理失败！')
+            }
+          })
+    },
+    analysis(){
+      alert('开始分析！')
+      request
+          .post('/analysis', "analysis")
+          .then(Response => {
+            if(Response.code==200){
+              alert('分析成功！')
+            }else{
+              console.log(Response.code)
+              alert('分析失败！')
+            }
+          })
     }
   }
 }
