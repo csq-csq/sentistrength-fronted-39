@@ -28,7 +28,7 @@ export default {
           .get('/getCSV')
           .then(successResponse => {
             if(successResponse.code==200){
-              const option = this.createChartOption(successResponse.data)
+              const option = this.createChartOption(successResponse.result)
               ChartB.setOption(option)
             }else{
               console.log(successResponse.message)
