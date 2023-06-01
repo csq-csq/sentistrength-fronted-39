@@ -1,8 +1,19 @@
 <template>
   <div>
     <div id="ChartA" :style="{width: '100%', height: '1000px'}" />
+
     <el-divider></el-divider>
+
     <button @click="fetchData">Get Data</button>
+    <el-table :data="tableData" stripe>
+      <el-table-column
+          v-for="{ prop, label } in colConfigs"
+          :key="prop"
+          :prop="prop"
+          :label="label">
+      </el-table-column>
+    </el-table>
+
     <div id="ChartB" style="width: 600px;height: 400px;"></div>
   </div>
 </template>
@@ -14,8 +25,33 @@ import request from "@/utils/request";
 export default {
   name: "Visualization",
   data() {
+    // this.colConfigs = [
+    //   { prop: 'comment_id', label: '评论id' },
+    //   { prop: 'content', label: '内容' },
+    //   { prop: 'issue_id', label: '问题id' },
+    //   { prop: 'neg', label: 'neg' },
+    //   { prop: 'pos', label: 'pos' },
+    //   { prop: 'scale', label: 'scale' },
+    //   { prop: 'send_date', label: '发送日期' },
+    //   { prop: 'trinary', label: 'trinary' },
+    //   { prop: 'upload_date', label: '上传日期' },
+    //   { prop: 'user_id', label: '用户id' }
+    // ]
     return {
       chart: null,
+      tableData: [],
+      colConfigs : [
+        { prop: 'comment_id', label: '评论id' },
+        { prop: 'content', label: '内容' },
+        { prop: 'issue_id', label: '问题id' },
+        { prop: 'neg', label: 'neg' },
+        { prop: 'pos', label: 'pos' },
+        { prop: 'scale', label: 'scale' },
+        { prop: 'send_date', label: '发送日期' },
+        { prop: 'trinary', label: 'trinary' },
+        { prop: 'upload_date', label: '上传日期' },
+        { prop: 'user_id', label: '用户id' }
+      ]
     }
   },
   mounted() {
@@ -28,8 +64,7 @@ export default {
           .get('/getCSV')
           .then(successResponse => {
             if(successResponse.code==200){
-              const option = this.createChartOption(successResponse.result)
-              ChartB.setOption(option)
+              this.tableData=successResponse.result
             }else{
               console.log(successResponse.message)
             }
