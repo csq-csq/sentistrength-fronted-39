@@ -5,12 +5,13 @@
     <el-divider></el-divider>
 
     <button @click="fetchData">Get Data</button>
-    <el-table :data="tableData" stripe>
+    <el-table :data="tableData" stripe  height="250">
       <el-table-column
           v-for="{ prop, label } in colConfigs"
           :key="prop"
           :prop="prop"
-          :label="label">
+          :label="label"
+          :show-overflow-tooltip="true">
       </el-table-column>
     </el-table>
 
