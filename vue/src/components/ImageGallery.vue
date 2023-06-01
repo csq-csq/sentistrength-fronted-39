@@ -1,6 +1,6 @@
 <template>
   <div class="image-container">
-    <img v-for="url in imageUrls" :src="url" :key="url" alt="图片" width="50%"/>
+    <img v-for="url in imageUrls" :src="url" :key="url" alt="图片" />
   </div>
 </template>
 
@@ -25,8 +25,7 @@ export default {
 }
 
 .image-container img {
-  width: 200px;
-  height: 200px;
+  width: 50%;
   margin: 10px;
 }
 </style>
