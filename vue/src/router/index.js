@@ -15,7 +15,10 @@ const routes = [
       {path: 'sentiArgs', name: 'SentiArgs', component: () => import('../views/SentiArgs.vue')},
       {path: 'options', name: 'Options', component: () => import('../views/Options.vue')},
       {path: 'file', name: 'File', component: () => import('../views/File.vue')},
-      {path: 'spider', name: 'Spider', component: () => import('../views/Spider')}
+      {path: 'spider', name: 'Spider', component: () => import('../views/Spider')},
+      {path: 'visualization', name: 'Visualization', component: () => import('../views/Visualization')},
+      {path: 'issues', name: 'Issues', component: () => import('../views/Issues')}
+
     ]
   },
 

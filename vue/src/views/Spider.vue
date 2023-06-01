@@ -5,7 +5,7 @@
         element-loading-text="正在爬取"
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)">
-      <h1>第一步：爬取</h1>
+      <h1>数据爬取</h1>
       <br>
       <el-form
           :model="dynamicValidateForm"
@@ -17,10 +17,7 @@
             :label="'版本' + (index+1)"
             :key="date.key"
             :prop="'dates.' + index + '.value'"
-            :rules="{
-        required: true, message: '域名不能为空', trigger: 'blur'
-      }"
-        >
+            :rules="{required: true, message: '域名不能为空', trigger: 'blur'}">
           <!--      <el-input v-model="domain.value"></el-input><el-button @click.prevent="removeDomain(domain)">删除</el-button>-->
           <el-date-picker
               v-model="date.value"
@@ -45,7 +42,7 @@
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-divider></el-divider>
-      <h1>第二步：预处理</h1>
+      <h1>数据预处理</h1>
       <br>
       <el-button type="primary" @click="pretreatment">预处理</el-button>
     </el-main>
@@ -56,7 +53,7 @@
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-divider></el-divider>
-      <h1>第三步：分析</h1>
+      <h1>数据分析</h1>
       <br>
       <el-button type="primary" @click="analysis">分析</el-button>
     </el-main>
