@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1>Echart项目分析与可视化</h1>
+    <br>
     <el-button @click="fetchImage" type="primary">Get Image</el-button>
     <image-gallery :image-urls="imageUrls" />
 
@@ -35,13 +37,13 @@ export default {
         { prop: 'comment_id', label: '评论id' },
         { prop: 'content', label: '内容' },
         { prop: 'issue_id', label: '问题id' },
+        { prop: 'send_date', label: '发送日期' },
+        { prop: 'upload_date', label: '更新日期' },
+        { prop: 'user_id', label: '用户id' },
         { prop: 'neg', label: 'neg' },
         { prop: 'pos', label: 'pos' },
         { prop: 'scale', label: 'scale' },
-        { prop: 'send_date', label: '发送日期' },
         { prop: 'trinary', label: 'trinary' },
-        { prop: 'upload_date', label: '上传日期' },
-        { prop: 'user_id', label: '用户id' }
       ]
     }
   },
@@ -76,6 +78,19 @@ export default {
     },
   }
 }
+
+// colConfigs : [
+//   { prop: 'comment_id', label: '评论id' },
+//   { prop: 'content', label: '内容' },
+//   { prop: 'issue_id', label: '问题id' },
+//   { prop: 'neg', label: 'neg' },
+//   { prop: 'pos', label: 'pos' },
+//   { prop: 'scale', label: 'scale' },
+//   { prop: 'send_date', label: '发送日期' },
+//   { prop: 'trinary', label: 'trinary' },
+//   { prop: 'upload_date', label: '上传日期' },
+//   { prop: 'user_id', label: '用户id' }
+// ]
 </script>
 
 <style scoped>
