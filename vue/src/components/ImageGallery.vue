@@ -1,6 +1,6 @@
 <template>
   <div class="image-container">
-    <img v-for="url in imageUrls" :src="url" :key="url" alt="图片" />
+    <img v-for="url in imageUrls" :src="url" :key="url" alt="图片" v-viewer/>
   </div>
 </template>
 
