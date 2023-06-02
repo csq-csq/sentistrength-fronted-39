@@ -6,19 +6,19 @@
       </el-menu-item>
 
       <el-menu-item index="/Options">
-        <template slot="title"><i class="el-icon-setting"></i>Options</template>
+        <template slot="title"><i class="el-icon-setting"></i>参数Options</template>
       </el-menu-item>
 
       <el-menu-item index="/SentiArgs">
-        <template slot="title"><i class="el-icon-setting"></i>SentiArgs</template>
+        <template slot="title"><i class="el-icon-setting"></i>参数SentiArgs</template>
       </el-menu-item>
 
       <el-menu-item index="/file">
-        <template slot="title"><i class="el-icon-files"></i>File</template>
+        <template slot="title"><i class="el-icon-files"></i>文件上传</template>
       </el-menu-item>
 
       <el-menu-item index="/spider">
-        <template slot="title"><i class="el-icon-s-data"></i>Spider</template>
+        <template slot="title"><i class="el-icon-s-data"></i>数据爬取分析</template>
       </el-menu-item>
 
       <el-menu-item index="/visualization">
