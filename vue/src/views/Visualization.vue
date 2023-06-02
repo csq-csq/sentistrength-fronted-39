@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Echart项目分析与可视化</h1>
+    <h2>Echart项目分析与可视化</h2>
     <br>
-    <el-button @click="fetchImage" type="primary">Get Image</el-button>
+    <el-button @click="fetchImage" type="primary">展示图片</el-button>
     <image-gallery :image-urls="imageUrls" />
 
     <el-divider></el-divider>
-    <el-button @click="fetchData" type="primary">Get Data</el-button>
+    <el-button @click="fetchData" type="primary">展示数据</el-button>
     <el-table :data="tableData" stripe  height="400">
       <el-table-column
           v-for="{ prop, label } in colConfigs"
